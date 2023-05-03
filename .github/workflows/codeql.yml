@@ -51,6 +51,4 @@ jobs:
       uses: github/codeql-action/upload-sarif@v2
       with:
         sarif_file: /home/runner/work/green-code-ing/results/java.sarif
-        category: "/language:java/${{ github.run_number }}-${{ github.run_id }}-upload"
-"
-        
+        category: "/language:java/${{ github.run_number }}-${{ github.run_id }}-upload"   
