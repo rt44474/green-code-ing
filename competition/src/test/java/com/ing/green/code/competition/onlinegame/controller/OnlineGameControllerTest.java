@@ -14,13 +14,12 @@ import java.util.List;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class OnlineGameControllerTest {
+class OnlineGameControllerTest {
     private final OnlineGameServiceInterface onlineGameServiceInterface = mock(OnlineGameServiceInterface.class);
     private final OnlineGameController onlineGameController = new OnlineGameController(onlineGameServiceInterface);
 
     @Test
-    void testCalculate()
-    {
+    void testCalculate() {
         Players players = new Players();
         List<List<Clan>> clans = new ArrayList<>();
         when(onlineGameServiceInterface.getClans(players)).thenReturn(clans);

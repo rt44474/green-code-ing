@@ -6,6 +6,8 @@ import com.ing.green.code.competition.atmservice.model.ATM;
 import com.ing.green.code.competition.atmservice.model.Task;
 import com.ing.green.code.competition.onlinegame.model.Clan;
 import com.ing.green.code.competition.onlinegame.model.Players;
+import com.ing.green.code.competition.transactions.model.Account;
+import com.ing.green.code.competition.transactions.model.Transaction;
 
 import java.io.IOException;
 import java.util.List;
@@ -38,6 +40,22 @@ public class TestData {
     }
 
     public static List<List<Clan>> getExampleOnlineGameResponse(Class<?> clazz, String fileName) throws IOException {
+        return objectMapper.readValue(
+                clazz.getClassLoader().getResourceAsStream("testresponses/" + fileName),
+                new TypeReference<>() {
+                }
+        );
+    }
+
+    public static List<Transaction> getExampleTransactionsRequest(Class<?> clazz, String fileName) throws IOException {
+        return objectMapper.readValue(
+                clazz.getClassLoader().getResourceAsStream("testrequests/" + fileName),
+                new TypeReference<>() {
+                }
+        );
+    }
+
+    public static List<Account> getExampleTransactionsResponse(Class<?> clazz, String fileName) throws IOException {
         return objectMapper.readValue(
                 clazz.getClassLoader().getResourceAsStream("testresponses/" + fileName),
                 new TypeReference<>() {

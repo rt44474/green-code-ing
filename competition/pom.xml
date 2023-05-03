@@ -129,6 +129,30 @@
 							</configOptions>
 						</configuration>
 					</execution>
+					<execution>
+						<id>transactions</id>
+						<goals>
+							<goal>
+								generate
+							</goal>
+						</goals>
+						<configuration>
+							<inputSpec>
+								${project.basedir}/src/main/resources/transactions.json
+							</inputSpec>
+							<generatorName>spring</generatorName>
+							<apiPackage>com.ing.green.code.competition.transactions.api</apiPackage>
+							<modelPackage>com.ing.green.code.competition.transactions.model</modelPackage>
+							<supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
+							<output>${project.basedir}</output>
+							<configOptions>
+								<delegatePattern>true</delegatePattern>
+								<sourceFolder>src-gen/main</sourceFolder>
+								<interfaceOnly>true</interfaceOnly>
+								<openApiNullable>false</openApiNullable>
+							</configOptions>
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
 			<plugin>

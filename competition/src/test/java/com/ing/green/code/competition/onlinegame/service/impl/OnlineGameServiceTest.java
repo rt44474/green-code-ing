@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import java.io.IOException;
 import java.util.List;
 
-public class OnlineGameServiceTest {
+class OnlineGameServiceTest {
     private final OnlineGameService onlineGameService = new OnlineGameService();
 
     @ParameterizedTest
