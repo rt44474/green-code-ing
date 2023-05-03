@@ -5,7 +5,10 @@ import com.ing.green.code.competition.atmservice.model.Task;
 import com.ing.green.code.competition.atmservice.service.AtmServiceInterface;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.AbstractMap;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -40,9 +43,8 @@ public class AtmService implements AtmServiceInterface {
                         (t1, t2) -> {
                             if (t1.getRegion().equals(t2.getRegion()) && t1.getAtmId().equals(t2.getAtmId())) {
                                 return t1.getRequestType().ordinal() > t2.getRequestType().ordinal() ? t1 : t2;
-                            } else {
-                                return t1;
                             }
+                            return t1;
                         },
                         LinkedHashMap::new));
     }
