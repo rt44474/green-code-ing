@@ -91,4 +91,18 @@ public class TestData {
         task.setAtmId(atmId);
         return task;
     }
+
+    public static Clan createClan(Integer numberOfPlayers, Integer points) {
+        Clan clan = new Clan();
+        clan.setNumberOfPlayers(numberOfPlayers);
+        clan.setPoints(points);
+        return clan;
+    }
+
+    public static Players createPlayers(Integer groupCount) {
+        Players players = new Players();
+        players.setGroupCount(groupCount);
+        players.setClans(List.of(createClan(1, 1)));
+        return players;
+    }
 }

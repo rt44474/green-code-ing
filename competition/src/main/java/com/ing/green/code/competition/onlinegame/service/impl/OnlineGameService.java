@@ -3,13 +3,15 @@ package com.ing.green.code.competition.onlinegame.service.impl;
 import com.ing.green.code.competition.onlinegame.model.Clan;
 import com.ing.green.code.competition.onlinegame.model.Players;
 import com.ing.green.code.competition.onlinegame.service.OnlineGameServiceInterface;
-import lombok.extern.slf4j.Slf4j;
+import com.ing.green.code.competition.onlinegame.validation.OnlineGameValidator;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
 
 @Service
-@Slf4j
 public class OnlineGameService implements OnlineGameServiceInterface {
 
     @Override
@@ -17,6 +19,8 @@ public class OnlineGameService implements OnlineGameServiceInterface {
         List<List<Clan>> result = new ArrayList<>();
         int maxNumberOfPlayers = players.getGroupCount();
         LinkedList<Clan> queue = new LinkedList<>(sortClans(players.getClans()));
+
+        OnlineGameValidator.validateInputs(players, queue);
 
         while (!queue.isEmpty()) {
             List<Clan> clans = new ArrayList<>();
@@ -49,5 +53,6 @@ public class OnlineGameService implements OnlineGameServiceInterface {
                         .thenComparingInt(Clan::getNumberOfPlayers))
                 .toList();
     }
+
 
 }
