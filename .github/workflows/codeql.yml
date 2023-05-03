@@ -29,15 +29,12 @@ jobs:
       uses: github/codeql-action/init@v2
       with:
         languages: ${{ matrix.language }}
+        
     - name: Setup Java
       uses: actions/setup-java@v3
       with:
         distribution: 'temurin'
         java-version: '17'
-        
-    - name: Generate random integer
-      id: random-int
-      run: echo "::set-output name=value::$(shuf -i 1-1000 -n 1)"        
       
     - name: Autobuild
       uses: github/codeql-action/autobuild@v2
@@ -45,21 +42,4 @@ jobs:
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
       with:
-        category: "/language:java/${{ github.run_number }}-${{ github.run_id }}-${{ steps.random-int.outputs.value }}-analyze"
-     
-  upload:
-    name: Upload results
-    needs: [analyze]
-    runs-on: ubuntu-latest
-    permissions:
-      actions: write
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Upload SARIF file
-      uses: github/codeql-action/upload-sarif@v2
-      with:
-        # Set a unique category for this SARIF upload
-        category: "/language:java/${{ github.run_number }}-${{ github.run_id }}-upload"
-        sarif_file: /home/runner/work/green-code-ing/results/java.sarif
+        category: "/language:java/${{ github.run_number }}-${{ github.run_id }}-analyze"
