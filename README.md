@@ -15,3 +15,10 @@ Analysis produced the following metric data:
 |                  Metric                  | Value |
 +------------------------------------------+-------+
 | Total lines of Java code in the database |  1343 |
+
+## Running the project
+1. Clone repository using command `git clone https://github.com/rt44474/green-code-ing.git`
+2. Go to directory `green-code-ing`
+3. Run build.sh
+4. Run run.sh
+5. Enjoy!
