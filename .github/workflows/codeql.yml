@@ -43,9 +43,3 @@ jobs:
       uses: github/codeql-action/analyze@v2
       with:
         category: "/language:java/${{ github.run_number }}-${{ github.run_id }}-analyze"
-
-    - name: Upload diagnostic data
-      uses: actions/upload-artifact@v2
-      with:
-        name: diagnostic-data
-        path: diagnostics.txt
